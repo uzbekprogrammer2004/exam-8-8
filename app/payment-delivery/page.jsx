@@ -6,15 +6,8 @@ import Img2 from '@/public/img2.png';
 import Img3 from '@/public/img3.png';
 import Img4 from '@/public/img4.png';
 
-interface Product {
-  name: string;
-  price: string;
-  old_price: string;
-  img: any;
-}
-
-const Index: React.FC = () => {
-  const data: Product[] = [
+const Index = () => {
+  const data = [
     {
       name: "Бутса Nike Mercurial Superfly 8 FG",
       price: "500 000 So'm",
