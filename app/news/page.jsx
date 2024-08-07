@@ -20,17 +20,6 @@ const Index = () => {
     { name: "Как начать бегать: советы для новичков", title: "Бег помогает улучшить общее здоровье, выносливость и настроение. Важно начать с небольших дистанций и постепенно увеличивать нагрузку...", time: "05.02.2022", eye: "700" }
   ];
 
-  const chunkData = (array, chunkSize) => {
-    return array.reduce((result, item, index) => {
-      const chunkIndex = Math.floor(index / chunkSize);
-      if (!result[chunkIndex]) {
-        result[chunkIndex] = [];
-      }
-      result[chunkIndex].push(item);
-      return result;
-    }, []);
-  };
-
   const data2 = [
     { name: "Бутса Nike Mercurial Superfly 8 FG", price: "500 000 So'm", old_price: "750 000 So'm", img: Img },
     { name: "Бутса Nike Mercurial Superfly 8 FG", price: "500 000 So'm", old_price: "750 000 So'm", img: Img2 },
@@ -38,14 +27,12 @@ const Index = () => {
     { name: "Бутса Nike Mercurial Superfly 8 FG", price: "500 000 So'm", old_price: "750 000 So'm", img: Img4 },
   ];
 
-  const rows = chunkData(data, 2);
-
   return (
     <main className="w-full lg:px-[138px] bg-[#f2f2f2]">
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex flex-col lg:flex-row gap-[24px] mb-8">
-          {row.map((item, itemIndex) => (
-            <div key={itemIndex} className="flex flex-col justify-between w-full lg:w-[50%] rounded-lg h-auto lg:h-[417px] bg-white text-black pt-[38px] pl-[35px] pb-[45px]">
+      <div className="mb-8">
+        {data.map((item, index) => (
+          <div key={index} className="flex flex-col lg:flex-row gap-[24px] mb-8">
+            <div className="flex flex-col justify-between w-full lg:w-[50%] rounded-lg h-auto lg:h-[417px] bg-white text-black pt-[38px] pl-[35px] pb-[45px]">
               <div>
                 <h2 className="text-[#1e1c14] text-[24px] lg:text-[32px] font-[700] font-[Fira Sans] w-full">
                   {item.name}
@@ -65,9 +52,9 @@ const Index = () => {
                 </article>
               </div>
             </div>
-          ))}
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
 
       <div className="mb-32">
         <h2 className="text-2xl font-bold mt-8 mb-4">Акция</h2>
