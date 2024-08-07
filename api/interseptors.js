@@ -1,16 +1,18 @@
+// src/api/interceptors.js
+
+import { getToken } from "../helper/auth-helper"; // Agar sizning loyihangizda `src` papkasi bo'lsa
 import axios from "axios";
-import { getAccessToken } from "@/helpers/auth-helpers"; // .js kengaytmasini qo'shish
 
-const API_URL = process.env.API_URL;
-
+// Axios instance yaratamiz
 const http = axios.create({
-    baseURL: API_URL || "https://store.go-clothes.uz/v1",
+    baseURL: 'https://store.go-clothes.uz/v1'
 });
 
+// Request interceptor qo'shamiz
 http.interceptors.request.use((config) => {
-    const access_token = getAccessToken();
-    if (access_token) {
-        config.headers["Authorization"] = `Bearer ${access_token}`;
+    const token = getToken();
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
 }, (error) => {
